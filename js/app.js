@@ -1,22 +1,32 @@
 
 const gameBoardControl = (function() {
-    let Anotherboard = ["X","O","X","O","O","X","O","O","X"]
+    let board = ["O","O","X","O","O","X","O","O","X"]
+    const updatePlayerChoice = (squareNum) => {
+       board[squareNum] = Player1.choice
+    }
     return{
-        Anotherboard
+        board,
+        updatePlayerChoice
     }
 })();
 
 // gameBoard.updateBoard()
 
-const createPlayer = (name) => {
+const createPlayer = (name, typeXO) => {
     const playerName = name
+    const choice = typeXO.toString().toUpperCase()
+
     return{
-        playerName
+        playerName,
+        choice
     }
 }
 
+const Player1 = createPlayer("Alex", "x")
+const Player2 = createPlayer("zachary", "O")
+
+
 const displayController = (function() {
-    let board = ["x","0","x","x","0","x","x","0","x"]
 
     // DOM Cacheing
     const gameBoard = document.querySelector(".gameboard")
@@ -26,12 +36,22 @@ const displayController = (function() {
         const playerssquare = document.createElement("div")
         playerssquare.classList.add("spot")
         playerssquare.dataset.num = i 
-        playerssquare.textContent = gameBoardControl.Anotherboard[i]
+        playerssquare.textContent = gameBoardControl.board[i]
         gameBoard.appendChild(playerssquare)
+        playerssquare.addEventListener("click", function(event){
+           gameBoardControl.updatePlayerChoice(event.target.dataset.num)
+           renderBoard()
+        })
+    }
+
+    
+    const clearBoard = () => {
+        gameBoard.innerHTML = ""
     }
     
     const renderBoard = () => {
-        for(let i = 0; i < gameBoardControl.Anotherboard.length; i++){
+        clearBoard()
+        for(let i = 0; i < gameBoardControl.board.length; i++){
             MakeSquare(i)
         }
     }
@@ -39,6 +59,10 @@ const displayController = (function() {
     return{
         renderBoard
     }
+})()
+
+const Game= (function(){
+
 })()
 
 
