@@ -1,8 +1,9 @@
 
 const gameBoardControl = (function() {
-    let board = ["O","O","X","O","O","X","O","O","X"]
+    let board = ["","","","","","","","",""]
+
     const updatePlayerChoice = (squareNum) => {
-       board[squareNum] = Player1.choice
+       board[squareNum] = game.playerTurns()
     }
     return{
         board,
@@ -15,15 +16,15 @@ const gameBoardControl = (function() {
 const createPlayer = (name, typeXO) => {
     const playerName = name
     const choice = typeXO.toString().toUpperCase()
+    const playerTurn = true
 
     return{
         playerName,
-        choice
+        choice,
+        playerTurn,
+        createPlayer
     }
 }
-
-const Player1 = createPlayer("Alex", "x")
-const Player2 = createPlayer("zachary", "O")
 
 
 const displayController = (function() {
@@ -61,7 +62,29 @@ const displayController = (function() {
     }
 })()
 
-const Game= (function(){
+const game = (function(){
+
+    const Player1 = createPlayer("Alex", "x")
+    const Player2 = createPlayer("zachary", "O")
+
+    const playerTurns = () => {
+        if (Player1.playerTurn === true){
+            Player1.playerTurn = false
+            Player2.playerTurn = true
+            return "X"
+        }else if(Player2.playerTurn === true){
+            Player1.playerTurn = true
+            Player2.playerTurn = false
+            return "0"
+        }
+    }
+
+
+    return{
+        Player1,
+        Player2,
+        playerTurns
+    }
 
 })()
 
