@@ -70,6 +70,14 @@ const game = (function(){
     const Player1 = createPlayer("Alex", "X")
     const Player2 = createPlayer("zachary", "O")
 
+    const startGame = () => {
+
+    }
+
+    const resetGame = () => {
+        
+    }
+
     // Player turn determiner
     const playerTurns = () => {
         if (Player1.playerTurn === true){
