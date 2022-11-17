@@ -1,7 +1,7 @@
-
+let player1Name = prompt("Please Enter Player1's Name")
+let player2Name = prompt("Please Enter Player2's Name")
 const gameBoardControl = (function() {
     // DOM Cache
-    const startBtn = document.querySelector(".start")
     const resetBtn = document.querySelector(".reset")
 
     // Game board Default
@@ -124,9 +124,11 @@ const displayController = (function() {
 
 const game = (function(){
       // DOM Cacheing
+    const startBtn = document.querySelector(".start")
 
-    const Player1 = createPlayer("Alex", "X")
-    const Player2 = createPlayer("zachary", "O")
+
+    const Player1 = createPlayer(player1Name, "X")
+    const Player2 = createPlayer(player2Name, "O")
 
     // Player turn determiner
     const playerTurns = () => {
