@@ -32,14 +32,16 @@ footer{
     align-items: center;
 }
 
-.game-container{
+.game-board-container{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: 100px 3fr 1fr;
 }
 
 .gameboard{
     height: 100%;
+    grid-row: 1/3;
+    grid-column: 2/3;
     display: grid;
     grid-template-columns: repeat(3,175px);
     grid-template-rows: repeat(3,175px);
@@ -71,9 +73,12 @@ footer>span{
 }
 
 .button-container{
+    grid-row: 3/4;
+    grid-column: 2/3;
     display: flex;
     justify-content: center;
     align-items: baseline;
+    margin: 40px;
     gap: 16px;
 }
 
@@ -96,4 +101,29 @@ button.reset:hover{
 button.start:hover{
     background-color: rgb(144, 199, 81);
     color: white;
+}
+
+.score-container-1{
+    display: grid;
+}
+.displaybox{
+    grid-row: 1/2;
+    grid-column: 2/3;
+    margin-bottom: 10px;
+    margin: 0px;
+}
+
+.winner{
+    font-size: 4em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    margin: 0px;
+}
+
+.draw{
+    font-size: 4em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    margin: 0px;
+    color: yellow;
 }
