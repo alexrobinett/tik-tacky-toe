@@ -1,10 +1,10 @@
 
 const gameBoardControl = (function() {
-    // DOM Cacheing
+    // DOM Cache
     const startBtn = document.querySelector(".start")
     const resetBtn = document.querySelector(".reset")
 
-    // Game board Defualt
+    // Game board Default
     let board = ["","","","","","","","",""]
 
     const updatePlayerChoice = (squareNum) => {
@@ -12,10 +12,14 @@ const gameBoardControl = (function() {
     }
 
     const resetGame = () => {
-        for(let i = 0; i < board.length; i++){
+        for(let i = 0; i < 9; i++){
             board[i] = ""
         }
+        displayController.clearDisplay()
+        displayController.clearBoard()
         displayController.renderBoard()
+        game.Player1.playerTurn = true
+        game.Player1.playerTurn = true
 
     }
 
@@ -45,9 +49,10 @@ const createPlayer = (name, typeXO) => {
 
 const displayController = (function() {
 
-    // DOM Cacheing
+    // DOM Cache
     const gameBoard = document.querySelector(".gameboard")
     const displayBox = document.querySelector(".displaybox")
+    const WinnerDisplay = document.querySelector(".winner")
     
     // Makes Square
     const MakeSquare= (i) => {
@@ -56,41 +61,40 @@ const displayController = (function() {
         playerssquare.dataset.num = i 
         playerssquare.textContent = gameBoardControl.board[i]
         gameBoard.appendChild(playerssquare)
-        playerssquare.addEventListener("click", function(event){
-           if(gameBoardControl.board[event.target.dataset.num] === ""){
-            gameBoardControl.updatePlayerChoice(event.target.dataset.num)
+        playerssquare.addEventListener("click", SquareEventListener)
+    }
+
+    const SquareEventListener = (e) => {
+        if(gameBoardControl.board[e.target.dataset.num] === ""){
+            gameBoardControl.updatePlayerChoice(e.target.dataset.num)
             game.determineWinner()
             renderBoard() 
-           }else return
-           
-        })
+           }
     }
 
     const displayWinner = (winner) => {
-        // Dom
-        const Player1Wins = document.createElement("span")
-        Player1Wins.classList.add("winner")
-        Player1Wins.textContent = `${game.Player1.playerName} Wins!`
-
-        const Player2Wins = document.createElement("span")
-        Player2Wins.classList.add("winner")
-        Player2Wins.textContent = `${game.Player2.playerName} Wins!`
-
-        const Draw = document.createElement("span")
-        Draw.classList.add("draw")
-        Draw.textContent = `it's A Draw Play Again!`
+    
 
         if(winner === "Player1"){
-            displayBox.appendChild(Player1Wins)
+            WinnerDisplay.innerHTML =  `${game.Player1.playerName} Wins!`
+            displayController.renderBoard()
+            displayBox.appendChild(WinnerDisplay)
         }else if (winner === "Player2"){
-            displayBox.appendChild(Player2Wins)
+            WinnerDisplay.innerHTML =  `${game.Player2.playerName} Wins!`
+            displayController.renderBoard()
+            displayBox.appendChild(WinnerDisplay)
         }else if (winner === "draw"){
-            displayBox.appendChild(Draw)
+            WinnerDisplay.innerHTML= `It's A Draw Play Again!`
+            displayBox.appendChild(WinnerDisplay)
         }
     }
 
     const clearBoard = () => {
         gameBoard.innerHTML = ""
+    }
+
+    const clearDisplay = () => {
+        WinnerDisplay.innerHTML = ""
     }
     
     const renderBoard = () => {
@@ -99,17 +103,27 @@ const displayController = (function() {
             MakeSquare(i)
         }
     }
+    const EndGame = () => {
+        game.Player2.playerTurn = false
+        game.Player1.playerTurn = false
+
+        }
+
+
+
+
 
     return{
         renderBoard,
         clearBoard,
+        clearDisplay,
         displayWinner,
+        EndGame,
     }
 })()
 
 const game = (function(){
       // DOM Cacheing
-      
 
     const Player1 = createPlayer("Alex", "X")
     const Player2 = createPlayer("zachary", "O")
@@ -124,6 +138,8 @@ const game = (function(){
             Player1.playerTurn = true
             Player2.playerTurn = false
             return "O"
+        }else if  (Player1.playerTurn === false && Player2.playerTurn === false){
+            return ""
         }
     }
 
@@ -133,38 +149,54 @@ const game = (function(){
         // Player 1 / X Win Cases
         if (gameBoardControl.board[0] === "X" && gameBoardControl.board[4] === "X" && gameBoardControl.board[8] === "X"){
             displayController.displayWinner("Player1")
+            displayController.EndGame()
         }else if (gameBoardControl.board[2] === "X" && gameBoardControl.board[4] == "X" && gameBoardControl.board[6] == "X"){
             displayController.displayWinner("Player1")
+            displayController.EndGame()
         }else if (gameBoardControl.board[0] === "X" && gameBoardControl.board[3] == "X" && gameBoardControl.board[6] == "X"){
             displayController.displayWinner("Player1")
+            displayController.EndGame()
         }else if (gameBoardControl.board[1] === "X" && gameBoardControl.board[4] == "X" && gameBoardControl.board[7] == "X"){
             displayController.displayWinner("Player1")
         }else if (gameBoardControl.board[2] === "X" && gameBoardControl.board[5] == "X" && gameBoardControl.board[8] == "X"){
             displayController.displayWinner("Player1")
+            displayController.EndGame()
+            displayController.displayWinner("")
         }else if (gameBoardControl.board[0] === "X" && gameBoardControl.board[1] == "X" && gameBoardControl.board[2] == "X"){
             displayController.displayWinner("Player1")
+            displayController.EndGame()
         }else if (gameBoardControl.board[3] === "X" && gameBoardControl.board[4] == "X" && gameBoardControl.board[5] == "X"){
             displayController.displayWinner("Player1")
+            displayController.EndGame()
         }else if (gameBoardControl.board[6] === "X" && gameBoardControl.board[7] == "X" && gameBoardControl.board[8] == "X"){
             displayController.displayWinner("Player1")
+            displayController.EndGame()
 
             // Player 2 / O's Win Cases
         }else if (gameBoardControl.board[0] === "O" && gameBoardControl.board[4] == "O" && gameBoardControl.board[8] == "O"){
             displayController.displayWinner("Player2")
+            displayController.EndGame()
         }else if (gameBoardControl.board[2] === "O" && gameBoardControl.board[4] == "O" && gameBoardControl.board[6] == "O"){
             displayController.displayWinner("Player2")
+            displayController.EndGame()
         }else if (gameBoardControl.board[0] === "O" && gameBoardControl.board[3] == "O" && gameBoardControl.board[6] == "O"){
             displayController.displayWinner("Player2")
+            displayController.EndGame()
         }else if (gameBoardControl.board[1] === "O" && gameBoardControl.board[4] =="O"  && gameBoardControl.board[7] == "O"){
             displayController.displayWinner("Player2")
+            displayController.EndGame()
         }else if (gameBoardControl.board[2] === "O" && gameBoardControl.board[5] == "O" && gameBoardControl.board[8] == "O"){
             displayController.displayWinner("Player2")
+            displayController.EndGame()
         }else if (gameBoardControl.board[0] === "O" && gameBoardControl.board[1] == "O" && gameBoardControl.board[2] == "O"){
             displayController.displayWinner("Player2")
+            displayController.EndGame()
         }else if (gameBoardControl.board[3] === "O" && gameBoardControl.board[4] == "O" && gameBoardControl.board[5] == "O"){
             displayController.displayWinner("Player2")
+            displayController.EndGame()
         }else if (gameBoardControl.board[6] === "O" && gameBoardControl.board[7] == "O" && gameBoardControl.board[8] == "O"){
             displayController.displayWinner("Player2")
+            displayController.EndGame()
         
             // Draw Case
         }else if ((gameBoardControl.board[0] === "O" || gameBoardControl.board[0] === "X") && 
@@ -178,6 +210,7 @@ const game = (function(){
                   (gameBoardControl.board[8] === "O" || gameBoardControl.board[8] === "X")){
                     console.log("it shoudl be a draw!")
             displayController.displayWinner("draw")
+            displayController.EndGame()
         }else console.log("Turn Taken")
     }
 
