@@ -1,0 +1,30 @@
+{
+  "name": "tik-tacky-toe",
+  "version": "1.0.0",
+  "description": "A classic take of the old fashioned game of tic-tac-toe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "eslintConfig": {
+    "extends": ["wesbos"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexrobinett/tik-tacky-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexrobinett/tik-tacky-toe/issues"
+  },
+  "homepage": "https://github.com/alexrobinett/tik-tacky-toe#readme",
+  "dependencies": {
+    "eslint-config-wesbos": "^3.2.3"
+  }
+}
