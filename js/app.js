@@ -144,50 +144,50 @@ const game = (function () {
       displayController.EndGame();
     } else if (
       gameBoardControl.board[2] === 'X' &&
-      gameBoardControl.board[4] == 'X' &&
-      gameBoardControl.board[6] == 'X'
+      gameBoardControl.board[4] === 'X' &&
+      gameBoardControl.board[6] === 'X'
     ) {
       displayController.displayWinner('Player1');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[0] === 'X' &&
-      gameBoardControl.board[3] == 'X' &&
-      gameBoardControl.board[6] == 'X'
+      gameBoardControl.board[3] === 'X' &&
+      gameBoardControl.board[6] === 'X'
     ) {
       displayController.displayWinner('Player1');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[1] === 'X' &&
-      gameBoardControl.board[4] == 'X' &&
-      gameBoardControl.board[7] == 'X'
+      gameBoardControl.board[4] === 'X' &&
+      gameBoardControl.board[7] === 'X'
     ) {
       displayController.displayWinner('Player1');
     } else if (
       gameBoardControl.board[2] === 'X' &&
-      gameBoardControl.board[5] == 'X' &&
-      gameBoardControl.board[8] == 'X'
+      gameBoardControl.board[5] === 'X' &&
+      gameBoardControl.board[8] === 'X'
     ) {
       displayController.displayWinner('Player1');
       displayController.EndGame();
       displayController.displayWinner('');
     } else if (
       gameBoardControl.board[0] === 'X' &&
-      gameBoardControl.board[1] == 'X' &&
-      gameBoardControl.board[2] == 'X'
+      gameBoardControl.board[1] === 'X' &&
+      gameBoardControl.board[2] === 'X'
     ) {
       displayController.displayWinner('Player1');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[3] === 'X' &&
-      gameBoardControl.board[4] == 'X' &&
-      gameBoardControl.board[5] == 'X'
+      gameBoardControl.board[4] === 'X' &&
+      gameBoardControl.board[5] === 'X'
     ) {
       displayController.displayWinner('Player1');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[6] === 'X' &&
-      gameBoardControl.board[7] == 'X' &&
-      gameBoardControl.board[8] == 'X'
+      gameBoardControl.board[7] === 'X' &&
+      gameBoardControl.board[8] === 'X'
     ) {
       displayController.displayWinner('Player1');
       displayController.EndGame();
@@ -195,57 +195,57 @@ const game = (function () {
       // Player 2 / O's Win Cases
     } else if (
       gameBoardControl.board[0] === 'O' &&
-      gameBoardControl.board[4] == 'O' &&
-      gameBoardControl.board[8] == 'O'
+      gameBoardControl.board[4] === 'O' &&
+      gameBoardControl.board[8] === 'O'
     ) {
       displayController.displayWinner('Player2');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[2] === 'O' &&
-      gameBoardControl.board[4] == 'O' &&
-      gameBoardControl.board[6] == 'O'
+      gameBoardControl.board[4] === 'O' &&
+      gameBoardControl.board[6] === 'O'
     ) {
       displayController.displayWinner('Player2');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[0] === 'O' &&
-      gameBoardControl.board[3] == 'O' &&
-      gameBoardControl.board[6] == 'O'
+      gameBoardControl.board[3] === 'O' &&
+      gameBoardControl.board[6] === 'O'
     ) {
       displayController.displayWinner('Player2');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[1] === 'O' &&
-      gameBoardControl.board[4] == 'O' &&
-      gameBoardControl.board[7] == 'O'
+      gameBoardControl.board[4] === 'O' &&
+      gameBoardControl.board[7] === 'O'
     ) {
       displayController.displayWinner('Player2');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[2] === 'O' &&
-      gameBoardControl.board[5] == 'O' &&
-      gameBoardControl.board[8] == 'O'
+      gameBoardControl.board[5] === 'O' &&
+      gameBoardControl.board[8] === 'O'
     ) {
       displayController.displayWinner('Player2');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[0] === 'O' &&
-      gameBoardControl.board[1] == 'O' &&
-      gameBoardControl.board[2] == 'O'
+      gameBoardControl.board[1] === 'O' &&
+      gameBoardControl.board[2] === 'O'
     ) {
       displayController.displayWinner('Player2');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[3] === 'O' &&
-      gameBoardControl.board[4] == 'O' &&
-      gameBoardControl.board[5] == 'O'
+      gameBoardControl.board[4] === 'O' &&
+      gameBoardControl.board[5] === 'O'
     ) {
       displayController.displayWinner('Player2');
       displayController.EndGame();
     } else if (
       gameBoardControl.board[6] === 'O' &&
-      gameBoardControl.board[7] == 'O' &&
-      gameBoardControl.board[8] == 'O'
+      gameBoardControl.board[7] === 'O' &&
+      gameBoardControl.board[8] === 'O'
     ) {
       displayController.displayWinner('Player2');
       displayController.EndGame();
