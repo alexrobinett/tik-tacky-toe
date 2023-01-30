@@ -6,12 +6,10 @@
 *{
     /* border: 2px red solid; */
 }
-html{
-    height: 100vh;
-}
+
 body{
     display: grid;
-    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-rows: .5fr 3fr .5fr;
     grid-column: 1fr 1fr 1fr;
     height: 100%;
     margin: 0px;
@@ -19,7 +17,7 @@ body{
 }
 
 h1{
-    font-size: 100px;
+    font-size: 3rem;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -27,6 +25,7 @@ header{
     text-align: center;
 }
 footer{
+    grid-row: 3/4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +34,7 @@ footer{
 .game-board-container{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 100px 3fr 1fr;
+    grid-template-rows: 1.5fr 2fr 1fr;
 }
 
 .gameboard{
@@ -43,8 +42,8 @@ footer{
     grid-row: 1/3;
     grid-column: 2/3;
     display: grid;
-    grid-template-columns: repeat(3,175px);
-    grid-template-rows: repeat(3,175px);
+    grid-template-columns: repeat(3,clamp(50px,80%,175px));
+    grid-template-rows: repeat(3,clamp(50px,80%,175px));
     /* border: solid 3px black; */
     justify-content: center;
     align-content: center;
@@ -83,10 +82,10 @@ footer>span{
 }
 
 button{
-    height: 90px;
+    height: 5rem;
     width: 250px;
     border-radius: 10px;
-    font-size: 3em;
+    font-size: 2em;
     font-weight: 500;
     font-family: Arial, Helvetica, sans-serif;
     background-color: whitesmoke;
@@ -111,11 +110,11 @@ button.start:hover{
     grid-column: 2/3;
     margin-bottom: 10px;
     margin: 0px;
-    height: 90px;
+    height: clamp(40px,50px,70px);
 }
 
 .winner{
-    font-size: 4em;
+    font-size: 2em;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
     margin: 0px;
